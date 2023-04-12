@@ -2,14 +2,13 @@ import pandas as pd
 import pickle
 import os.path
 from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
+
 
 def read_google_sheet_into_dataframe(sheet_id, range_name):
     creds = None
@@ -45,9 +44,7 @@ def read_google_sheet_into_dataframe(sheet_id, range_name):
 
 
 if __name__ == "__main__":
-
     sheet_id = os.environ.get("SHEET_ID")
     range_name = os.environ.get("RANGE_NAME")
-
     df = read_google_sheet_into_dataframe(sheet_id, range_name)
     print(df)
