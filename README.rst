@@ -1,44 +1,79 @@
-========
-sheet-df
-========
+============
+sheet_df
+============
 
+DBT YML ERD Generator
 
-.. image:: https://img.shields.io/pypi/v/sheet_df.svg
-        :target: https://pypi.python.org/pypi/sheet_df
+.. image:: https://img.shields.io/pypi/v/sheet_df?style=for-the-badge
+   :target: https://pypi.org/project/sheet_df/
 
-.. image:: https://img.shields.io/travis/neo-andrew-moss/sheet_df.svg
-        :target: https://travis-ci.com/neo-andrew-moss/sheet_df
+Overview
+----------
 
-.. image:: https://readthedocs.org/projects/sheet-df/badge/?version=latest
-        :target: https://sheet-df.readthedocs.io/en/latest/?version=latest
-        :alt: Documentation Status
+This Python program connects to the google sheets api and creates a pandas dataframe from the target sheet.
 
+Usage
+-----
 
+.. code-block:: bash
 
+   python -m sheet_df --directory <directory> --include_non_join_keys <True/False>
 
-Google sheet to dataframe
+.. code-block:: python
 
+   df = read_google_sheet_into_dataframe(sheet_id, range_name)
 
-* Free software: MIT license
-* Documentation: https://sheet-df.readthedocs.io.
+Config
+-----
 
+You must have SHEET_ID and RANGE_NAME env vars. You will also need a credentials.json and a token.pickle from google.
 
-Pre
--------
+DEV
+---
 
-1. Enable the Google Sheets API for your Google account
-2. Create OAuth 2.0 client ID and obtain the credentials.json file. You can follow the instructions in the [Python Quickstart guide](https://developers.google.com/sheets/api/quickstart/python).
-3. Set env vars in `.env`(see `.env.example`)
+Create venv
+~~~~~~~~~~~~
 
-Features
---------
+.. code-block:: bash
 
-* python ./sheet_df/sheet_df.py
+   python -m venv env
 
-Credits
--------
+Activate venv
+~~~~~~~~~~~~~~~
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+unix
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. code-block:: bash
+
+   source env/bin/activate
+
+windows
+
+.. code-block:: bash
+
+   env\Scripts\activate.bat
+
+Install Packages
+~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   pip install -r requirements.txt
+
+Test
+~~~~~
+
+.. code-block:: bash
+
+   make test
+
+Format
+~~~~~~
+
+.. code-block:: bash
+
+   make format
+
+.. code-block:: bash
+
+   make lint
