@@ -4,6 +4,9 @@ format:
 lint:
 	pylint ./sheet_df ./tests
 
+validate_rst:
+	python -m rstvalidator *.rst
+
 clean: clean-build clean-pyc clean-test
 
 clean-build:
@@ -25,7 +28,7 @@ clean-test:
 test:
 	pytest ./tests
 
-release: dist
+release: dist validate_rst
 	twine upload dist/*
 
 dist: clean

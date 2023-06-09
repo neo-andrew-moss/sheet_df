@@ -15,18 +15,15 @@ This Python program connects to the google sheets api and creates a pandas dataf
 Usage
 -----
 
-.. code-block:: bash
-
-   python -m sheet_df --directory <directory> --include_non_join_keys <True/False>
-
 .. code-block:: python
 
-   df = read_google_sheet_into_dataframe(sheet_id, range_name)
+   df = read_google_sheet_into_dataframe(sheet_id, range_name, credentials_path)
 
 Config
 ------
 
-You must have SHEET_ID and RANGE_NAME env vars. You will also need a credentials.json and a token.pickle from google.
+You must have `SHEET_ID`` and `RANGE_NAME`` env vars. You will also need a `credentials.json` from google. The `credentials_path`
+arg defaults to "credentials.json"
 
 DEV
 ---

@@ -37,6 +37,6 @@ setup(
     test_suite="tests",
     tests_require=["pytest"],
     url="https://github.com/neo-andrew-moss/sheet_df",
-    version="0.0.1rc1",
+    version="0.0.1rc2",
     zip_safe=False,
 )

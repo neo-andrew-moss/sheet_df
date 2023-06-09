@@ -3,6 +3,7 @@ import os
 import os.path
 
 import pandas as pd
+from pandas import DataFrame
 from dotenv import load_dotenv
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -11,10 +12,11 @@ from googleapiclient.discovery import build
 load_dotenv()
 
 
-def read_google_sheet_into_dataframe(sheet_id, range_name):
+def read_google_sheet_into_dataframe(
+    sheet_id: str, range_name: str, credentials_path="credentials.json"
+) -> DataFrame:
     creds = None
     token_path = "token.pickle"
-    credentials_path = "credentials.json"
 
     if os.path.exists(token_path):
         with open(token_path, "rb") as token:
@@ -40,8 +42,7 @@ def read_google_sheet_into_dataframe(sheet_id, range_name):
     values = result.get("values", [])
 
     if not values:
-        print("No data found in the Google Sheet.")
-        return None
+        raise ValueError("No data found in the Google Sheet.")
 
     df = pd.DataFrame(values[1:], columns=values[0])
     return df
