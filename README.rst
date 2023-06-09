@@ -24,7 +24,7 @@ Usage
    df = read_google_sheet_into_dataframe(sheet_id, range_name)
 
 Config
------
+------
 
 You must have SHEET_ID and RANGE_NAME env vars. You will also need a credentials.json and a token.pickle from google.
 
