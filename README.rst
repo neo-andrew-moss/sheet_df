@@ -2,7 +2,7 @@
 sheet_df
 ============
 
-DBT YML ERD Generator
+Google sheet to dataframe
 
 .. image:: https://img.shields.io/pypi/v/sheet_df?style=for-the-badge
    :target: https://pypi.org/project/sheet_df/
