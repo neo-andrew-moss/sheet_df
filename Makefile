@@ -1,5 +1,15 @@
+SHELL := /bin/bash
+
 src = sheet_df
 tst = tests
+
+.PHONY: bumpversion
+bumpversion:
+ifdef PART
+	@bump2version $(PART)
+else
+	$(error PART is not set. Usage: make bumpversion PART=<part>)
+endif
 
 format:
 	isort $(src) $(tst)

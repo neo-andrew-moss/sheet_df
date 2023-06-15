@@ -80,7 +80,7 @@ Version & Release
 
 .. code-block:: bash
 
-    bump2version <major/minor/patch>
+    make bumpversion part=<major/minor/patch>
 
 .. code-block:: bash
 
