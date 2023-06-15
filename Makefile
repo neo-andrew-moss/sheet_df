@@ -1,11 +1,18 @@
+src = sheet_df
+tst = tests
+
 format:
-	black ./sheet_df ./tests
+	isort $(src) $(tst)
+	black $(src) $(tst)
 
 lint:
-	pylint ./sheet_df ./tests
+	pylint $(src) $(tst)
 
-validate_rst:
-	python -m rstvalidator *.rst
+typecheck:
+	mypy $(src) $(tst)
+
+pre-commit:
+	pre-commit run --all-files
 
 clean: clean-build clean-pyc clean-test
 
@@ -26,9 +33,9 @@ clean-test:
 	rm -fr .pytest_cache
 
 test:
-	pytest ./tests
+	pytest $(tst)
 
-release: dist validate_rst
+release: dist
 	twine upload dist/*
 
 dist: clean

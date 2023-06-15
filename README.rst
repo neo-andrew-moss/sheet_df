@@ -26,51 +26,81 @@ You must have `SHEET_ID`` and `RANGE_NAME`` env vars. You will also need a `cred
 arg defaults to "credentials.json"
 
 DEV
----
+===
 
 Create venv
-~~~~~~~~~~~~
+-----------
 
 .. code-block:: bash
 
-   python -m venv env
+    python -m venv env
 
 Activate venv
-~~~~~~~~~~~~~~~
+-------------
 
-unix
-
-.. code-block:: bash
-
-   source env/bin/activate
-
-windows
+- unix
 
 .. code-block:: bash
 
-   env\Scripts\activate.bat
+    source env/bin/activate
+
+- windows
+
+.. code-block:: bash
+
+    env\Scripts\activate.bat
 
 Install Packages
-~~~~~~~~~~~~~~~~
+----------------
 
 .. code-block:: bash
 
-   pip install -r requirements.txt
+    pip install -r requirements.txt
 
 Test
+----
+
+.. code-block:: bash
+
+    make test
+
+Format
+------
+
+.. code-block:: bash
+
+    make format
+
+.. code-block:: bash
+
+    make lint
+
+Version & Release
+-----------------
+
+.. code-block:: bash
+
+    bump2version <major/minor/patch>
+
+.. code-block:: bash
+
+    make release
+
+**note** Don't forget to `git push` with `--tags`
+
+pre-commit
+----------
+
+Setup
 ~~~~~
 
 .. code-block:: bash
 
-   make test
+    pre-commit install
 
-Format
-~~~~~~
-
-.. code-block:: bash
-
-   make format
+Run all
+~~~~~~~
 
 .. code-block:: bash
 
-   make lint
+    make pre-commit

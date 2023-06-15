@@ -1,13 +1,13 @@
-import pickle
 import os
 import os.path
+import pickle
 
 import pandas as pd
-from pandas import DataFrame
 from dotenv import load_dotenv
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from pandas import DataFrame
 
 load_dotenv()
 
@@ -51,5 +51,7 @@ def read_google_sheet_into_dataframe(
 if __name__ == "__main__":
     sheet_id = os.environ.get("SHEET_ID")
     range_name = os.environ.get("RANGE_NAME")
+    if not sheet_id or not range_name:
+        raise ValueError("envs are busted")
     df = read_google_sheet_into_dataframe(sheet_id, range_name)
     print(df)
